@@ -1,2 +1,2 @@
 # Super-D-Bros
-Juego de plataformas 2D desarrollado con Unity
+Pequeño juego de plataformas 2D con Unity. Actualmente en desarrollo.
