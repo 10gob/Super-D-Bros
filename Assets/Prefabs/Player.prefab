@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4125200938726302}
   - component: {fileID: 50572929064182118}
   - component: {fileID: 70328878730912222}
+  - component: {fileID: 241744776}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -44,8 +45,8 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
+  m_UseAutoMass: 1
+  m_Mass: 5.9190664
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 2
@@ -70,6 +71,22 @@ CapsuleCollider2D:
   m_Offset: {x: 0.21392171, y: 1.8453772}
   m_Size: {x: 1.3045822, y: 3.4307542}
   m_Direction: 0
+--- !u!114 &241744776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499684892552420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1caf198eb824ea54a8bb513ad7205a3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpForce: 55
+  ground:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &1562707301167334
 GameObject:
   m_ObjectHideFlags: 0
