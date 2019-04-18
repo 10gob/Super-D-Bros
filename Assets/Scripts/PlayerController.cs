@@ -20,6 +20,9 @@ public class PlayerController : MonoBehaviour
 
     public static PlayerController sharedInstance;     //player tambien es un singleton, de manera que solo puede haber uno en el juego. Lo inicializamos en el awake. 
 
+    private Vector3 startPosition;      //creamos un vector 3D para guardar la posicion inicial del jugador. Tiene que ser 3D porque, 
+                                        //aunque estamos creando un juego en dos dimensiones, la posicion de todos los objetos queda definida por tres componentes(x,y,z).  
+
     //Antes de que el juego comience, necesitamos que la variable rigidbody tome el rigidbody del personaje. 
     //Si lo hicieramos en el start, podrian pasar algunos segundos antes de que el rigidbody se configurara. 
     //Todo lo que suceda en el awake esta listo antes de empezar a ejecutarse el juego. 
@@ -30,13 +33,17 @@ public class PlayerController : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>(); //Get component sirve para recorrer el inspector, viendo todas las componentes
                                                  //que tiene un objeto, en este caso el player, para tomar la componente deseada.
                                                  //En este caso, el rigidbody.
+
+        startPosition = this.transform.position;  //el vector startPosition tendra las coordenadas position de la componente transform del jugador antes de empezar 
+                                                  //a ejecutarse el juego.
     }
 
-    // Start is called before the first frame update
-    void Start()
+    // Este no es el void Start de monobehaviour
+    public void StartGame()  
     {
         animation.SetBool("isAlive", true);          //hacemos que al iniciarse el videojuego, las variables boleanas tocar el suelo y estar vivo sean verdaderas
         animation.SetBool("isGrounded", true);       //Set bool, set float, etc atribuye el valor que queramos a una variable.
+        this.transform.position = startPosition;      //cada vez que reiniciamos el juego ponemos al personaje en la posicion que hemos tomado como inicial en el awake. 
     }
 
     // Update is called once per frame. El update es llamado hasta 60 veces por segundo. 

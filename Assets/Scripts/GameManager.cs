@@ -32,15 +32,19 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Start"))     //esta forma de configurar los botones se utiliza para juegos multiplataforma. Lo que hacemos es crear un boton llamado "Start"
-        {                                     //que posteriormente podremos asignar a una tecla del teclado, un boton de nintendo switch, etc. 
-            StartGame();                      // para configurar este boton debemos irnos a edit-->project settings-->input y crear un nuevo boton. Ej: si pone 18 escribimos 19
+        if (Input.GetButtonDown("Start") && this.currentStateGame != GameState.inGame)     //esta forma de configurar los botones se utiliza para juegos multiplataforma. 
+        {                                     //Lo que hacemos es crear un boton llamado "Start"que posteriormente podremos asignar a una tecla del teclado, un boton de 
+            StartGame();                      // nintendo switch, etc. para configurar este boton debemos irnos a edit-->project settings-->input y crear un nuevo boton. 
+                                              //Ej: si pone 18 escribimos 19
+                                              //La segunda condicion del if evita que al pulsar la tecla s en cualquier momento el juego se reinicie, haciendolo solo cuando
+                                              //el estado del juego sea distinto a inGame
         }
     }
 
     public void StartGame()
     {
         SetGameState(GameState.inGame);
+        PlayerController.sharedInstance.StartGame();  //al reiniciar el juego, ejecutamos este metodo, que se encuentra en el script del jugador
     }
 
     public void GameOver()
