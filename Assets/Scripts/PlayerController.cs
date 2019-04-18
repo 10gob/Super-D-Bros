@@ -16,7 +16,9 @@ public class PlayerController : MonoBehaviour
 
     public Animator animation;           //creamos esta variable para la animacion del personaje
                                          //en unity tenemos que arrastrar el sprite del jugador a la casilla de animator que nos ha aparecido en el inspector.
-    public float runningSpeed = 2.1f;     
+    public float runningSpeed = 2.1f;
+
+    public static PlayerController sharedInstance;     //player tambien es un singleton, de manera que solo puede haber uno en el juego. Lo inicializamos en el awake. 
 
     //Antes de que el juego comience, necesitamos que la variable rigidbody tome el rigidbody del personaje. 
     //Si lo hicieramos en el start, podrian pasar algunos segundos antes de que el rigidbody se configurara. 
@@ -24,6 +26,7 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
+        sharedInstance = this;        //con esto evitamos que si tuvieramos dos jugadores en la partida, los dos saltaran, por ejemplo.     
         rigidbody = GetComponent<Rigidbody2D>(); //Get component sirve para recorrer el inspector, viendo todas las componentes
                                                  //que tiene un objeto, en este caso el player, para tomar la componente deseada.
                                                  //En este caso, el rigidbody.
@@ -105,5 +108,11 @@ public class PlayerController : MonoBehaviour
          * 0.2f:                          a una distancia maxima de 0.2 metros
          * ground:                        indica que nos hemos encontrado con la capa suelo. 
          */
+    }
+
+    public void Kill()
+    {
+        GameManager.sharedInstance.GameOver();
+        this.animation.SetBool("isAlive", false);
     }
 }
