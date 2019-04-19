@@ -168,7 +168,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 311
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -572,7 +572,7 @@ GameObject:
   - component: {fileID: 1734133953}
   - component: {fileID: 1734133952}
   - component: {fileID: 1734133955}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: KillZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
